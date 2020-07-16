@@ -25,7 +25,6 @@ import com.vaadin.annotations.JavaScript;
  * Example version of CKEditorTextField that loads ckeditor js-library from ckeditor.com. Remember that you need to
  * have suitable license to use CKEditor. http://ckeditor.com/pricing
  */
-@JavaScript({"https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js", "vaadin-save-plugin.js"})
 public class CKEditorTextField extends AbstractCKEditorTextField {
 
     public CKEditorTextField() {

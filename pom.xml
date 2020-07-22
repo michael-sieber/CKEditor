@@ -5,7 +5,7 @@
 	<groupId>org.vaadin.alump</groupId>
 	<artifactId>ckeditor-root</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.2.adito</version>
+	<version>1.0.3.adito</version>
 	<name>CKEditor Root Project</name>
 
 	<prerequisites>

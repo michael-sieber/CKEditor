@@ -1544,6 +1544,10 @@ legend.cke_voice_label {
     background: url(icons.png?t=eb2d11644) no-repeat 0 -1992px !important;
 }
 
+.cke_button__codesnippet_icon {
+    background: url(icons.png?t=eb2d11644) no-repeat 0 -2016px !important;
+}
+
 .cke_hidpi .cke_button__about_icon {
     background: url(icons_hidpi.png?t=eb2d11644) no-repeat 0 -0px !important;
     background-size: 16px !important;
@@ -1961,5 +1965,10 @@ legend.cke_voice_label {
 
 .cke_hidpi .cke_button__emojipanel_icon {
     background: url(icons_hidpi.png?t=eb2d11644) no-repeat 0 -1992px !important;
+    background-size: 16px !important;
+}
+
+.cke_hidpi .cke_button__codesnippet_icon {
+    background: url(icons_hidpi.png?t=eb2d11644) no-repeat 0 -2016px !important;
     background-size: 16px !important;
 }

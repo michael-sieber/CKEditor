@@ -13,10 +13,10 @@
  * (1) https://ckeditor.com/cke4/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) https://ckeditor.com/cke4/builder/e5c6c1a9f2f78f29f5a6459a54451411
+ * (2) https://ckeditor.com/cke4/builder/24a2c4554138d513650f3b703a4fe958
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) https://ckeditor.com/cke4/builder/download/e5c6c1a9f2f78f29f5a6459a54451411
+ * (3) https://ckeditor.com/cke4/builder/download/24a2c4554138d513650f3b703a4fe958
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -56,26 +56,27 @@ var CKBUILDER_CONFIG = {
 		'about' : 1,
 		'autogrow' : 1,
 		'basicstyles' : 1,
-		'bidi' : 1,
-		'blockquote' : 1,
-		'clipboard' : 1,
-		'colorbutton' : 1,
-		'colordialog' : 1,
-		'contextmenu' : 1,
-		'copyformatting' : 1,
-		'dialogadvtab' : 1,
-		'div' : 1,
-		'elementspath' : 1,
-		'enterkey' : 1,
-		'entities' : 1,
-		'filebrowser' : 1,
-		'find' : 1,
-		'flash' : 1,
-		'floatingspace' : 1,
-		'font' : 1,
-		'format' : 1,
-		'forms' : 1,
-		'horizontalrule' : 1,
+        'bidi': 1,
+        'blockquote': 1,
+        'clipboard': 1,
+        'colorbutton': 1,
+        'colordialog': 1,
+        'contextmenu': 1,
+        'copyformatting': 1,
+        'dialogadvtab': 1,
+        'div': 1,
+        'elementspath': 1,
+        'emoji': 1,
+        'enterkey': 1,
+        'entities': 1,
+        'filebrowser': 1,
+        'find': 1,
+        'flash': 1,
+        'floatingspace': 1,
+        'font': 1,
+        'format': 1,
+        'forms': 1,
+        'horizontalrule': 1,
 		'htmlwriter' : 1,
 		'iframe' : 1,
 		'image' : 1,

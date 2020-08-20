@@ -3,7 +3,5 @@
  * For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-CKEDITOR.editorConfig = function (config) {
-    config.uploadUrl = 'adsf';
-    config.filebrowserUploadUrl = '/uploader/upload.php?type=Files';
-};
+// CKEDITOR.editorConfig = function (config) {
+// };

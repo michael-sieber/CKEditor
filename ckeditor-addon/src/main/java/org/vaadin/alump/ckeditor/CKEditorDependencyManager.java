@@ -3,7 +3,8 @@ package org.vaadin.alump.ckeditor;
 import com.vaadin.server.*;
 
 import java.io.*;
-import java.net.URL;
+import java.net.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.*;
 import java.util.zip.*;
@@ -91,6 +92,16 @@ public class CKEditorDependencyManager
     String pathToJar = split[0];
     if (pathToJar.startsWith("jar:file:"))
       pathToJar = pathToJar.substring(9);
+
+    try
+    {
+      // Decode bspw. %20 zu " "
+      pathToJar = URLDecoder.decode(pathToJar, StandardCharsets.UTF_8.toString());
+    }
+    catch (UnsupportedEncodingException pE)
+    {
+      throw new RuntimeException("Failed to load Resources from system folder", pE);
+    }
 
     String pathInJar = split[1];
     if (pathInJar.startsWith("/"))

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.vaadin.alump</groupId>
-	<artifactId>ckeditor-root</artifactId>
-	<packaging>pom</packaging>
-	<version>1.0.5.adito</version>
-	<name>CKEditor Root Project</name>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.vaadin.alump</groupId>
+  <artifactId>ckeditor-root</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0.6.adito</version>
+  <name>CKEditor Root Project</name>
 
-	<prerequisites>
-		<maven>3</maven>
-	</prerequisites>
+  <prerequisites>
+    <maven>3</maven>
+  </prerequisites>
 
-	<modules>
-		<module>ckeditor-addon</module>
-		<module>ckeditor-demo</module>
-	</modules>
+  <modules>
+    <module>ckeditor-addon</module>
+    <module>ckeditor-demo</module>
+  </modules>
 
 	<profiles>
 		<profile>

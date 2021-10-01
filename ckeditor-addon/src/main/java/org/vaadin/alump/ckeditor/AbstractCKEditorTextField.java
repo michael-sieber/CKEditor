@@ -176,6 +176,15 @@ public abstract class AbstractCKEditorTextField extends AbstractField<String>
   }
 
   @Override
+  protected void fireEvent(EventObject event)
+  {
+    super.fireEvent(event);
+
+    if(event instanceof ValueChangeEvent)
+      textIsDirty = true;
+  }
+
+  @Override
   public void changeVariables(Object source, Map<String, Object> variables)
   {
     //super.changeVariables(source, variables);
@@ -266,6 +275,7 @@ public abstract class AbstractCKEditorTextField extends AbstractField<String>
   public void detach()
   {
     super.detach();
+    textIsDirty = true;
   }
 
   @Override

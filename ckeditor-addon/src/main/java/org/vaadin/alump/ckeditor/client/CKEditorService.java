@@ -86,7 +86,8 @@ public class CKEditorService {
 	 * @param listener the CKEditorService.CKEditorListener will get notified when the editor instance is ready, changed, etc.
 	 * @param jsInPageConfig the String possible custom "in page" configuration; note that this must be an expected JSON for the CKEDITOR in page config. sent "as is" without any real syntax or security testing, so be sure you know it's valid and not malicious,such as: <code>{toolbar : 'Basic', language : 'en'}</code>
 	 */
-	public static native JavaScriptObject loadEditor(String id, CKEditorService.CKEditorListener listener, String jsInPageConfig, int compWidth, int compHeight)
+	public static native JavaScriptObject loadEditor(String id, CKEditorService.CKEditorListener listener, String jsInPageConfig, int compWidth, int compHeight,
+																									 String startupMode)
 	/*-{
 	 	// Build our inPageConfig object based on the JSON jsInPageConfig sent to us.
 	 	var inPageConfig = @org.vaadin.alump.ckeditor.client.CKEditorService::convertJavaScriptStringToObject(Ljava/lang/String;)(jsInPageConfig);
@@ -100,9 +101,11 @@ public class CKEditorService {
 	 	} else {
 	 		if (!inPageConfig.width) inPageConfig.width = compWidth;
 	 		if (!inPageConfig.height) inPageConfig.height = compHeight;
-	 	}
-	 	
-	 	myEditor = $wnd.CKEDITOR.appendTo( id, inPageConfig );
+		}
+
+		inPageConfig.startupMode = startupMode;
+
+		myEditor = $wnd.CKEDITOR.appendTo( id, inPageConfig );
 	 		 	
 	 	// The 'listener' passed to us is used as 'listenerData' for the callback.
 		myEditor.on( 'instanceReady', function( ev ) {
@@ -177,6 +180,7 @@ public class CKEditorService {
 		void onBlur();
 		void onFocus();
 		void onSave();
+		void onResize(Number[] pData);
 	}
 
 }

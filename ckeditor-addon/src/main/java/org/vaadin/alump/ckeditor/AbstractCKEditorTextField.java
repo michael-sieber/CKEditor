@@ -272,6 +272,13 @@ public abstract class AbstractCKEditorTextField extends AbstractField<String>
   }
 
   @Override
+  public void attach()
+  {
+    super.attach();
+    textIsDirty = true;
+  }
+
+  @Override
   public void detach()
   {
     super.detach();

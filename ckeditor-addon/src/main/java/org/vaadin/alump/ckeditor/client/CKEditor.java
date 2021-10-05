@@ -119,6 +119,9 @@ public class CKEditor extends JavaScriptObject {
 		this.on('dataReady', function(ev) { 
 			ev.listenerData.@org.vaadin.alump.ckeditor.client.CKEditorService.CKEditorListener::onDataReady()();
 		}, null, listener);
+		this.on('resize', function(ev) {
+			ev.listenerData.@org.vaadin.alump.ckeditor.client.CKEditorService.CKEditorListener::onResize([Ljava/lang/Number;)([ev.data.outerHeight, ev.data.contentsHeight , ev.data.outerWidth]);
+		}, null, listener);
 
 	}-*/;
 	

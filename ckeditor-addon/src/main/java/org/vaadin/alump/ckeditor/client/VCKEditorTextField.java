@@ -19,9 +19,7 @@
  */
 package org.vaadin.alump.ckeditor.client;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.*;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
@@ -99,7 +97,11 @@ public class VCKEditorTextField extends Widget implements Paintable, CKEditorSer
 	private int tabIndex;
 	private boolean setFocusAfterReady;
 	private boolean setTabIndexAfterReady;
-	
+
+	private String startupMode = null;
+	private Number outerHeight = null;
+	private Number outerWidth = null;
+
 	/**
 	 * The constructor should first call super() to initialize the component and
 	 * then handle any initialization relevant to Vaadin.
@@ -300,7 +302,6 @@ public class VCKEditorTextField extends Widget implements Paintable, CKEditorSer
 			ckEditor = null;
 		}
 
-		dataBeforeEdit = null;
 		ignoreDataChangesUntilReady = false;
 		ckEditorIsReady = false;
 		ckEditorIsBeingLoaded = false;
@@ -319,8 +320,9 @@ public class VCKEditorTextField extends Widget implements Paintable, CKEditorSer
 							paintableId,
 							VCKEditorTextField.this,
 							inPageConfig,
-							VCKEditorTextField.super.getOffsetWidth(),
-							VCKEditorTextField.super.getOffsetHeight());
+							outerWidth != null ? outerWidth.intValue() : VCKEditorTextField.super.getOffsetWidth(),
+							outerHeight != null ? outerHeight.intValue() : VCKEditorTextField.super.getOffsetHeight(),
+							startupMode != null ? startupMode : "wysiwyg");
 					ckEditorIsBeingLoaded = false; // Don't need this as we have ckEditor set now.
 				}
 			});
@@ -340,6 +342,18 @@ public class VCKEditorTextField extends Widget implements Paintable, CKEditorSer
 			}
 			clientToServer.updateVariable(paintableId, VAR_VAADIN_SAVE_BUTTON_PRESSED,"",false); // inform that the button was pressed too
 			clientToServer.sendPendingVariableChanges(); // ensure anything queued up goes now on SAVE
+		}
+	}
+
+	@Override
+	public void onResize(Number[] pData)
+	{
+		if ( ckEditor != null && ckEditorIsReady ) {
+			if(pData != null && pData.length == 3)
+			{
+				outerHeight = pData[0];
+				//outerWidth = pData[2];
+			}
 		}
 	}
 
@@ -432,7 +446,7 @@ public class VCKEditorTextField extends Widget implements Paintable, CKEditorSer
 		}
 
 		ckEditor.setReadOnly(readOnly);
-		
+
 		ckeditorVersion = CKEditorService.version();
 		clientToServer.updateVariable(paintableId, VAR_VERSION, ckeditorVersion, true);
 	}
@@ -461,12 +475,19 @@ public class VCKEditorTextField extends Widget implements Paintable, CKEditorSer
 				}
 			}
 
-			if ("wysiwyg".equals(mode)) {
-				ckEditor.protectBody(protectedBody);
-			}
+			setProtectBody(mode);
+
+			startupMode = mode;
 		}
 	}
-	
+
+	private void setProtectBody(String mode)
+	{
+		if (ckEditor != null && "wysiwyg".equals(mode)) {
+			ckEditor.protectBody(protectedBody);
+		}
+	}
+
 	// Listener callback
 	@Override
 	public void onSelectionChange() {
@@ -512,7 +533,8 @@ public class VCKEditorTextField extends Widget implements Paintable, CKEditorSer
 			Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 				@Override
 				public void execute() {
-					ckEditor.resize(VCKEditorTextField.super.getOffsetWidth(), VCKEditorTextField.super.getOffsetHeight());
+					ckEditor.resize(outerWidth != null ? outerWidth.intValue() : VCKEditorTextField.super.getOffsetWidth(),
+													outerHeight != null ? outerHeight.intValue() : VCKEditorTextField.super.getOffsetHeight());
 				}
 			});
 		}

@@ -12,6 +12,12 @@
     <maven>3</maven>
   </prerequisites>
 
+	<parent>
+		<groupId>de.adito</groupId>
+		<artifactId>adito-parent</artifactId>
+		<version>1.1.4</version>
+	</parent>
+
   <modules>
     <module>ckeditor-addon</module>
     <module>ckeditor-demo</module>
